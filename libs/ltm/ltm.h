@@ -14,7 +14,7 @@ enum ltmStates
     HEADER_DATA
 };
 
-#define LONGEST_FRAME_LENGTH 18
+#define MAX_FRAME_LENGTH 18
 #define G_FRAME_LENGTH 18
 #define A_FRAME_LENGTH 10
 #define S_FRAMEL_ENGTH 11
@@ -68,7 +68,7 @@ private:
     char telemFrameType;
     uint8_t telemFrameLength;
     uint8_t telemReceiverIndex;
-    uint8_t telemSerialBuffer[LONGEST_FRAME_LENGTH];
+    uint8_t telemSerialBuffer[MAX_FRAME_LENGTH];
 
 public:
     telemetryPacket_t last;
@@ -153,7 +153,7 @@ public:
                     }
 
                     telemReadState = WAIT;
-                    memset(telemSerialBuffer, 0, LONGEST_FRAME_LENGTH);
+                    memset(telemSerialBuffer, 0, MAX_FRAME_LENGTH);
                 }
                 else
                 {

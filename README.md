@@ -19,3 +19,7 @@ ln -s ~/Progs/DIYRcController/libs/sbusTx Arduino/libraries/sbusTx
 
 ## Hardware
 For developmnet I use `esp32 node mcu` and `MatekF405 Wing V2` with `INAV 7.1.2` installed on it.
+
+
+## High-level protocol (in development)
+Protocol description can be found in `RCS/README.md`
