@@ -50,7 +50,7 @@ public:
 
     void set(uint16_t channel, int value)
     {
-        channels[channel - 1] = value;
+        channels[channel] = value;
     }
 
     void createPacket(uint8_t packet[], int allChannels[])
@@ -102,8 +102,13 @@ public:
     void refresh()
     {
         // Call this in main loop (you can't execute it in IRQ via hardware timer without tuning esp32 watchdog)
-        createPacket(packet, channels);
-        fcSerial->write(packet, SBUS_PACKET_LENGTH);
+        if (millis() - lastRefreshTime >= SBUS_UPDATE_RATE){
+            createPacket(packet, channels);
+            fcSerial->write(packet, SBUS_PACKET_LENGTH);
+            lastRefreshTime = millis();
+
+        }
+        
     }
 };
 

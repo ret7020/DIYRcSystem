@@ -1,31 +1,20 @@
-/*
-It is code for ESP32 MCU
-*/
-
 #include "sbusTx.h"
+#include "ltm.h"
 
-
-uint8_t sbusPacket[SBUS_PACKET_LENGTH];
-int rcChannels[SBUS_CHANNEL_NUMBER];
-uint32_t sbusSendTime = 0;
+SbusTX sbus(Serial2);
+LTMRX ltm(Serial1);
+uint32_t lastTelemPrint = 0;
 
 void setup(){
     Serial.begin(115200);
-    Serial.println("[INFO] Starting...");
-
-    for (uint8_t i = 0; i < SBUS_CHANNEL_NUMBER; i++) {
-        rcChannels[i] = 1500; // Default middle stick positions
-    }
-    Serial2.begin(100000, SERIAL_8E2);
 }
 
 void loop(){
-    if (millis() - sbusSendTime >= SBUS_UPDATE_RATE){
-        rcChannels[0] += 1;
-        if (rcChannels[0] > 2000) rcChannels[0] = 1200;
-        createSbusPacket(sbusPacket, rcChannels, false, false);
-        Serial2.write(sbusPacket, SBUS_PACKET_LENGTH);
-        sbusSendTime = millis();
+    sbus.refresh();
+    ltm.read();
+    if (millis() - lastTelemPrint > 500){
+        // builtin printf is esp32 feature
+        printf("---\nVoltage: %u mV\n\nRoll: %u\nPitch: %u\nYaw:%u\n", ltm.last.voltage, ltm.last.roll, ltm.last.pitch, ltm.last.yaw); 
+        lastTelemPrint = millis();
     }
-
 }
