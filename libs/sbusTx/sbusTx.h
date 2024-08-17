@@ -18,6 +18,7 @@
 #define SBUS_STATE_FAILSAFE 0x08
 #define SBUS_STATE_SIGNALLOSS 0x04
 #define SBUS_UPDATE_RATE 15 // ms
+#define SBUS_BAUD 100000
 
 void createSbusPacket(uint8_t packet[], int channels[], bool isSignalLoss, bool isFailsafe);
 void sbusTx();

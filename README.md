@@ -8,7 +8,7 @@ So, the reciever will have 2 or 3 independent transievers that can be configured
 
 But I'm planning to use not only LoRA. In future I want to control UAV via NVIS antenna on Short Wave (2 - 5 Mhz in day time summer) with Si5351 chip and FSK (or other modulation), but this is comlicated task in part of creating "working" antenna.
 
-Reciever will be supported with Flight Controller (we have to use fligh controller for long-range :). It will use SBUS protocol to send RX channels to FC and Mavlink over UART to get telemetry from FC.
+Reciever will be supported with Flight Controller (we have to use fligh controller for long-range :). It will use SBUS protocol to send RX channels to FC and LTM/Mavlink over UART to get telemetry from FC.
 
 Maybe, I will post some notes/dev-logs/tutorials to my habr profile (ru).
 
@@ -16,3 +16,6 @@ Maybe, I will post some notes/dev-logs/tutorials to my habr profile (ru).
 ```bash
 ln -s ~/Progs/DIYRcController/libs/sbusTx Arduino/libraries/sbusTx
 ```
+
+## Hardware
+For developmnet I use `esp32 node mcu` and `MatekF405 Wing V2` with `INAV 7.1.2` installed on it.
