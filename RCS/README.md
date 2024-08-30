@@ -66,7 +66,7 @@ Per channel memory distribution **variant_0**:
 ]
 ```
 
-Total: 7 byte (56 bits)
+Total: 7 bytes (56 bits)
 
 ```
 Less data - more speed on same params (coding rate, band-width).
