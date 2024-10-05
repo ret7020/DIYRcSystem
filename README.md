@@ -14,7 +14,7 @@ Maybe, I will post some notes/dev-logs/tutorials to my habr profile (ru).
 
 
 ```bash
-ln -s ~/Progs/DIYRcController/libs/sbusTx Arduino/libraries/sbusTx
+ln -s ~/Progs/DIYRcController/libs/sbusTx ~/Arduino/libraries/sbusTx
 ```
 
 ## Hardware

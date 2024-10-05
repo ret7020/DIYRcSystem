@@ -6,3 +6,6 @@ testWireCheck:
 
 testSbusTx:
 	arduino-cli compile ./Tests/SBUSLib/SBUSLib.ino --fqbn esp32:esp32:nodemcu-32s --port $(PORT) --upload --verbose
+
+testSX127X:
+	arduino-cli compile ./Tests/Radio/Radio.ino --fqbn esp32:esp32:nodemcu-32s --port $(PORT) --upload --verbose
